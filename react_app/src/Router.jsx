@@ -5,7 +5,7 @@ import NotFound from "./views/NotFound";
 import Online from "./views/Online";
 import Offline from "./views/Offline";
 import Login from "./views/Login";
-import SignUp from "./views/signup";
+import SignUp from "./views/SignUp";
 import DefaultLayout from "./components/DefaultLayout";
 import GuestLayout from "./components/GuestLayout";
 import Dashboard from "./views/Dashboard";
