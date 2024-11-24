@@ -4,6 +4,7 @@ import axiosClient from '../axios-client'
 import { UseStateContext } from '../contexts/ContextsProvider'
 
 export default function SignUp() {
+  
 const nameRef                 = useRef()
 const emailRef                = useRef()
 const passwordRef                  = useRef()
@@ -12,16 +13,17 @@ const {setUser,setToken} = UseStateContext()
 
   const onSubmit = (ev)=>{
     ev.preventDefault()
+    axiosClient.post("/SignUp",payload).then(({data})=>{
+      setUser(data.user)
+      setToken(data.token)
+    })
     const payload = {
       name              :   nameRef.current.value                , 
       email            :    emailRef.current.value            ,
       password        :     passwordRef.current.value               ,
       password_confirmation: passwordConfirmationRef.current.value ,
     }
-axiosClient.post("/SignUp",payload).then(({data})=>{
-  setUser(data.user)
-  setToken(data.token)
-})
+
 .catch(err =>{
   const response = err.response
   if (response && response.status == 422) {
