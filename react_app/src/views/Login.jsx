@@ -17,7 +17,7 @@ export default function Login() {
 <input type="password"  placeholder='Password'/>
 <button className="btn btn-block"> Login</button>
 <p className='message'>
-  Not registred? <Link to="/SingUp"> Create an account</Link>
+  Not registred? <Link to="/signup"> Create an account</Link>
 
 </p>
     </form>

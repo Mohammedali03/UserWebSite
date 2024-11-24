@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function SignUp() {
   const onSubmit = (ev)=>{
@@ -9,7 +10,7 @@ export default function SignUp() {
       <div className='form'>
     <form onSubmit={onSubmit}>
       <h1 className='title'>
-      Sign up your account
+     Create account
       </h1>
 <input type='text' placeholder='full name' />
 <input type='email' placeholder='Email' />
