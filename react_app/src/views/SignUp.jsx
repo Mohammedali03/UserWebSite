@@ -21,8 +21,13 @@ const {setUser,setToken} = UseStateContext()
 axiosClient.post("/SignUp",payload).then(({data})=>{
   setUser(data.user)
   setToken(data.token)
-}
-)
+})
+.catch(err =>{
+  const response = err.response
+  if (response && response.status == 422) {
+    console.log(response.data.errors)
+  }
+})
   }
   return (
     <div className="login-signup-form animated fadeInDown">
