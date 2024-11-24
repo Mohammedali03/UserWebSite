@@ -13,7 +13,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ContextProvider>
     <RouterProvider router={router}/> 
-    <App/> 
+    {/* <App/>  */}
     </ContextProvider>
    
   </StrictMode>,
