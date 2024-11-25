@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use APP\Models\User;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
+use APP\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +14,7 @@ class AuthController extends Controller
    
     public function signup (SignupRequest $request){
         $data =$request->validated();
- 
+  /** @var \App\Models\User $user */
         $user=User::create([
    'name'=> $data['name'],
    'email'=>$data['email'],
@@ -28,10 +29,16 @@ class AuthController extends Controller
     'message'=>'provided email address or password is incorrect'
    ]) ;
  }
+  /** @var \App\Models\User $user */
  $user = Auth::user();
- $token = $user->createToken('main')->plainTextToken;
+  $token = $user->createToken('main')->plainTextToken;
 
  return response(compact('user','token')) ;
     }
-    public function logout(Request $request){}
+    public function logout(Request $request){
+       /** @var \App\Models\User $user */
+       $user = $request->user();
+       $user->currentAccessToken()->delete();
+       return response('',204);
+    }
 }
